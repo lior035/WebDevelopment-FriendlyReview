@@ -1,0 +1,502 @@
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Friendly Review Mobile Applivation</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.0/jquery.mobile-1.3.0.min.css" />
+        <script src="http://code.jquery.com/mobile/1.3.0/jquery.mobile-1.3.0.min.js"></script> 
+        <script type="text/JavaScript" src="UtilityFunctions.js"></script> 
+          
+    </head>
+    
+    <body>
+   
+    <!--------------------------Start of Sign In page-------------------------->
+
+    <section id="SignInPage" data-role="page" data-theme ="b">
+        <div data-role="header">Sign-In page</div>
+        <br>
+                 <form id="signinForm">
+                     <label>User name:</label><br/>
+                     <input type=text name="userName" placeHolder ="Enter your user name" value="" id="sig_userName"  onkeyup="DisabledLogInButton();"/>
+                     <br/><label>Password:</label><br/>
+                     <input type="password" name="pass" placeHolder ="Enter your password " id="sig_pass" onkeyup ="DisabledLogInButton();"/>
+                     <br/>
+                     <input type="button" id ="signinbutton" onclick="SignInPreform();"   value="Signin" disabled  name="signinButton">
+                     <br>
+                </form>
+            <a href="#SignUpPage" data-role="button" onclick="cleanFormSignUp();">Sign Up</a>
+       
+       </section>
+    
+   <!--------------------------End of Sign In page-------------------------->
+
+   <!--------------------------Start of Sign Up page-------------------------->
+
+   <section id="SignUpPage" data-role="page" data-theme="b">
+    <div data-role="header">Sign-Up page</div>
+    <br>
+       <form id="signupForm">
+             
+            <label> User name:</label>
+            <input type="text" placeholder="Enter your user name" name="userName" id="signup_userName" onkeyup="DisabledSignUpButton();"><br>
+           
+            <label>E-Mail:</label>
+            <input type="email" name="email" placeHolder ="Enter your email address" id="signup_eMail" onkeyup="DisabledSignUpButton();"><br>
+            
+            <label>Password:</label>
+            <input type="password" placeholder="Enter password" name="password" id="signup_password" onkeyup="DisabledSignUpButton();"><br>
+           
+            <label>Password again:</label>
+            <input type="password" placeholder="Re enter password" name="passwordAgain" id="signup_passAgain" onkeyup="DisabledSignUpButton();"><br><br>
+            <input type="button" id="signupButton" onclick="SignUpPreform();" value="Sign up" disabled>
+                  
+         </form>
+    
+    <div data-role="footer"><a href="#SignInPage" data-role="button" data-icon="back" onclick="cleanFormSignIn();">Back</a></div>
+   
+     </section>
+        
+    <!--------------------------End of Sign Up page-------------------------->
+   
+    <!--------------------------Start of Home page-------------------------->
+
+    <section id="HomePage" data-role="page" data-theme="b">
+        <div data-role="header">Home page</div>
+        <br>
+        <u><b>Here you can edit you profile, go to the friend zone or visit the restaurant zone.</b></u>
+        <br><br>
+            
+            <a href="#RestaurantZonePage" data-role="button">Resturants Zone</a>
+
+            <a href="#FriendZonePage" data-role="button">Friend Zone</a>
+
+            <a href="#editprofilepage" data-role="button">Edit Profile</a>
+    </section>
+
+    <!--------------------------End of Home page-------------------------->
+    
+    <!-----------------------Start of RestaurantZone page----------------->
+
+    <section id="RestaurantZonePage" data-role="page" data-theme ="b">
+        <div data-role="header">Restaurant Zone</div>
+        <br>
+        <u><b>Here you can add, update or search for restaurants</b></u>
+        <br>
+        <br>
+        
+        <a href="#AddRestaurantPage" data-role="button" data-icon="plus" onclick="cleanFormAddRestaurant();">Add</a>
+
+        <a href="#UpdateRestaurantPage"  data-role="button" data-icon="refresh" onclick="cleanFormUpdateRestaurant();">Update</a>
+
+        <a href="#SearchRestaurantPage" data-role="button" data-icon="search" onclick="cleanAllSearchPageElements()">Search</a>
+
+        <div data-role="footer"><a href="#HomePage" data-role="button" data-icon="home">Home</a></div>
+    </section>
+    
+    <!-----------------------End of RestaurantZone page------------------->
+   
+    <!-----------------------Start of AddRestaurant page----------------->
+
+   
+    <section id="AddRestaurantPage" data-role="page" data-theme ="b">
+        <div data-role="header">Add Restaurant</div>
+        
+        <form id="addRestaurantForm">        
+            <label>Restaurant Name</label>
+            <input type="text"  placeholder="Restaurant Name" id="addRest_name" name="restName" onkeyup ="DisabledAddButton();" >
+            
+            <label>Restaurant Address</label>
+            <input type="text" name="restAddress" placeholder="Restaurant Address" id="addRest_addr" onkeyup ="DisabledAddButton();">
+           
+            <label>Restaurant Link</label>
+            <input type="text" name="restLink" placeholder="Restaurant Link" id="addRest_link" onkeyup ="DisabledAddButton();">  
+                       
+        </form>
+        
+        <div data-role="fieldcontain" id="addTypeFood" >
+            <fieldset id ="selectOptionsFoodType" data-role="controlgroup" data-type="horizontal">
+                   <legend>Food Served:</legend>
+                       <label><input type="checkbox" value ="meat" name="foodServed" onclick="DisabledAddButton();" /> Meat</label>
+                       <label><input type="checkbox" value ="fish" name="foodServed" onclick="DisabledAddButton();"/>Fish </label>
+                       <label><input type="checkbox" value ="salads" name="foodServed" onclick="DisabledAddButton();"/> Salads</label>
+            </fieldset>
+        </div>
+           
+         <input type="button" id="SubmitAddButton" onclick="AddRestaurantPerform();" value="Add" disabled>
+           
+        <div data-role="footer">
+            <a href="#HomePage" data-role="button" data-icon="home">Home</a>
+            <a href="#RestaurantZonePage" data-role="button" data-icon="grid">Restaurant Zone</a>
+        </div>
+         
+    </section>
+    
+    
+    <!-----------------------End of AddRestaurant page----------------->
+    
+    <!-----------------------Start of UpdateRestaurant page------------>
+
+    <section id="UpdateRestaurantPage" data-role="page" data-theme ="b">
+        <div data-role="header">Update Restaurant</div>
+        
+        <form id="updateRestaurantForm" > 
+            <label>Restaurant Name: </label>
+            <input type="text" placeholder="Restaurant Name" id="UpdateRestaurant_name" name="restName" onkeyup ="DisabledUpdateButton();" >    
+        </form>
+        
+        <br>
+        <input type="button" id="SubmitUpdateButton" value="Search" name="Search" disabled onclick="SearchRestaurantToUpdatePerform();"> 
+        
+        <div data-role="footer">
+            <a href="#HomePage" data-role="button" data-icon="home">Home</a>
+            <a href="#RestaurantZonePage" data-role="button" data-icon="grid">Restaurant Zone</a>
+        </div>
+
+    </section>
+    <!-----------------------End of UpdateRestaurant page-------------->
+    
+   <!-----------------------Start of UpdateRestaurantShow page------------>
+
+    <section id="UpdateRestaurantShowPage" data-role="page" data-theme ="b">
+        <div data-role="header">Update Restaurant</div>
+        
+        <form id="updateRestaurantFormShow" > 
+            <label>Restaurant Name: </label>
+            <input type="text" id="UpdateRestaurant_nameShow" name="restName" disabled >    
+        
+            <label>Restaurant Address </label>
+            <input type="text" id="UpdateRestaurant_addrShow" name="restAddr" disabled >    
+        
+            <label>Restaurant Link </label>
+            <input type="text" id="UpdateRestaurant_linkShow" name="restLink" disabled >    
+        
+            <label>Restaurant Score </label>
+            <input type="text" id="UpdateRestaurant_scoreShow" name="restScore" disabled >    
+       
+        </form>
+        
+        <div data-role="fieldcontain" id="addTypeFoodResultShow" >
+            <fieldset id ="selectOptionsFoodType" data-role="controlgroup" data-type="horizontal">
+                   <legend>Food Served:</legend>
+                   <div id ="addCheckBox" data-role="checkbox"></div>
+            </fieldset>
+        </div>
+        
+        <input type="button" id="updateButtonToPress" value="Update"  disabled onclick="updateRestaurantValues();" > 
+        
+        <div data-role="footer">
+            <a href="#HomePage" data-role="button" data-icon="home" onclick="removeCheckBox();">Home</a>
+            <a href="#RestaurantZonePage" data-role="button" data-icon="grid" onclick="removeCheckBox();">Restaurant Zone</a>
+        </div>
+    </section>
+    
+    <!-----------------------End of UpdateRestaurantShow page------------>
+
+    
+   <!-----------------------Start of SearchRestaurnt page------------>
+
+   <section id="SearchRestaurantPage" data-role="page" data-theme ="b">
+        <div data-role="header">Search Restaurant</div>
+        
+        <div data-role="fieldcontain" id ="byNameContainerSearchRestaurant"> 
+         <form id="SearchRestaurantByNameForm" > 
+            <label>Restaurant Name: </label>
+            <input type="text" id="SearchRestaurantByNameForm_name" name="restName" placeholder="Enter Restaurant Name" onkeyup="DisabledSearchByNameButtonSearchRestaruntPage();" />    
+            <input type ="button" disabled id ="SearchRestaurantByNameForm_ButtonSubmit" value ="Search" onclick="preformSearchRestaurantByName();">
+         </form>
+        </div>
+        
+        <br>
+               
+        <div data-role="fieldcontain" id ="byFilterContainerSearchRestaurant"> 
+        
+         <form id ="SearchRestaurantByFilterForm">
+            <label>Restaurant Type </label>
+            <div data-role="fieldcontain" id="SearchRestaurantByFilterForm_containerFoodTypeCheckbox" >
+            <fieldset id ="SearchRestaurantByFilterForm_selectOptionsFoodType" data-role="controlgroup" data-type="horizontal">
+                       <label><input type="checkbox" id="meatCB" value ="meat" name="SearchRestaurantByFilterForm_foodServed" onclick="DisabledSearchByTypeButtonSearchRestaruntPage();" /> Meat</label>
+                       <label><input type="checkbox" id="fishCB" value ="fish" name="SearchRestaurantByFilterForm_foodServed" onclick="DisabledSearchByTypeButtonSearchRestaruntPage();"/>Fish </label>
+                       <label><input type="checkbox"  id="saladsCB" value ="salads" name="SearchRestaurantByFilterForm_foodServed" onclick="DisabledSearchByTypeButtonSearchRestaruntPage();"/> Salads</label>
+            </fieldset>
+            </div>
+           
+            <div data-role="fieldcontain" id="SearchRestaurantByFilterForm_containerFoodTypeRadio" >
+            <fieldset id ="SearchRestaurantByFilterForm_selectOptionsRadio" data-role="controlgroup">
+                <label><input type="radio" id ="radioIntersact" checked="true" value ="Intersact" name="SearchRestaurantByFilterForm" /> Intersact</label>
+                <label><input type="radio" id ="radioUnion" value ="Union" name="SearchRestaurantByFilterForm" />Union </label>
+            </fieldset>
+            </div>
+                      
+            <input type ="button" id ="SearchRestaurantByFilterForm_ButtonSubmit" value ="Search" disabled onclick="preformSearchRestaurantByFilter();">
+        </form>
+        </div>
+        
+        <div data-role="footer">
+            <a href="#HomePage" data-role="button" data-icon="home" onclick="cleanAllSearchPageElements();">Home</a>
+            <a href="#RestaurantZonePage" data-role="button" data-icon="grid" onclick="cleanAllSearchPageElements();">Restaurant Zone</a>
+        </div>
+   </section>
+   
+   <!-----------------------End of SearchRestaurnt page------------>
+   
+     
+   <!-----------------------Start of ShowResultSearchByName page------------>
+  
+  <section id="ShowResultSearchByName" data-role="page" data-theme ="b">
+        <div data-role="header">Search Results</div>
+     
+            <h2>Restaurant Details:</h2>
+            
+            <ul data-role ="listview" data-inset="true" ><li id ="addRestInfo"></li></ul>
+            <br>
+            <h3>Food Served:</h3>
+            <fieldset data-role="controlgroup" data-type="horizontal">
+            <div id ="addFoodTypeCB" data-role="checkbox"></div>
+            </fieldset>
+            
+        <div data-role="footer">
+            <a href="#HomePage" data-role="button" data-icon="home" onclick="cleanResultByNamePage();">Home</a>
+            <a href="#RestaurantZonePage" data-role="button" data-icon="grid" onclick="cleanResultByNamePage();">Restaurant Zone</a>
+            <a href ="#SearchRestaurantPage" data-role="button" data-icon="back" onclick="cleanResultByNamePage();">Back to Search</a>
+        </div>
+   </section>
+   
+   <!-----------------------End of ShowResultSearchByName page------------>
+    
+  <!-----------------------Start of ShowResultSearchByType page------------>
+   
+   <section id="ShowResultSearchByType" data-role="page" data-theme ="b">
+       
+   <div data-role="header">Search Results</div>
+    
+   
+   <ul data-role ="listview" id="refreshStyleHere"><li id ="addAllReleventRest"></li>
+   <ul data-role ="listview" data-inset="true"><li id ="addRestInfoFilter"></li></ul>
+
+   </ul>
+        
+    <div data-role="footer">
+            <a href="#HomePage" data-role="button" data-icon="home" onclick="cleanResultByTypePage();">Home</a>
+            <a href="#RestaurantZonePage" data-role="button" data-icon="grid" onclick="cleanResultByTypePage();">Restaurant Zone</a>
+            <a href ="#SearchRestaurantPage" data-role="button" data-icon="back" onclick="cleanResultByTypePage();">Back to Search</a>
+    </div>
+   </section>
+  
+  <!-----------------------End of ShowResultSearchByType page------------>
+    
+    <!-----------------------Start of FriendZone page-------------------->
+        
+        <section id="FriendZonePage" data-role="page" data-theme ="b">
+        <div data-role="header">Friend Zone</div>
+        
+        <br>
+        <u>Here you can add, remove or search for friends</u>
+        <br>
+        <br>
+      
+         <a href="#AddFriendPage" data-role="button" data-icon="plus" onclick="cleanFormAddRestaurant();">Add</a>
+  
+         <a href="#RemoveFriendPage" data-role="button" data-icon="minus" onclick="cleanFormAddRestaurant();">Remove</a>
+      
+        <a href="#SearchFriendPage" data-role="button" data-icon="search" onclick="cleanFormAddRestaurant();">Search</a>
+        <div data-role="footer"><a href="#HomePage" data-role="button" data-icon="home">Home</a></div>
+       
+        </section>    
+    <!-----------------------End of FriendZone page---------------------->
+    
+    <!-----------------------Start of SearchFriend Page------------------>
+    
+    <section id="SearchFriendPage" data-role="page" data-theme ="b">
+    <div data-role="header">Search Friend</div>
+     <form id="searchByNameForm">
+            <div id="Seperator">
+                <br>
+            <label > Search by name: </label>
+            <input type="text" name="friendName" placeholder="Enter friend's name" id="name2" onkeyup ="DisableSearchFriendButton();"/>
+            <input type="button" disabled id ="searchFriendButton" onclick="searchFriend('byName');" value="Search!" data-role="button">
+            
+             <br>
+       </form>
+          
+        <form id="searchByCriterion">
+            <div id="Seperator">
+            <label > Search by criterion: </label>
+            <br><br>
+          <div id ="friendType"  
+        <fieldset data-role="controlgroup">
+        <input type="radio" value="All" name="criterionType" id="radioAll" checked="checked">
+     	<label for="radioAll">All</label>
+
+        <input type="radio" value="Favorite" name="criterionType" id="radioFav" >
+     	<label for="radioFav">Favourite</label>
+
+        <input type="radio" value="Regular" name="criterionType" id="radioReg" >
+     	<label for="radioReg">Regular</label>
+        
+        </fieldset>
+            </div>   
+            
+            
+             
+             <input type="button" onclick="searchFriend('byType');" value="Search!" data-role="button">
+             <input type='hidden' id='someId' name='kindOfRequest' value='Search by criterion'/>
+             <br>
+       </form>
+    
+        <span id="error"></span>
+        <span id="header"></span>
+        
+       
+        <ul  data-role="listview" data-inset="true" id="listSearchFriend"></ul>
+          <ul  data-role="listview" data-inset="true" id="listSearchFriendByName"></ul>
+      
+        <div data-role="footer">
+            <a href="#HomePage" data-role="button" data-icon="home" onclick="cleanFormSearchFriend();">Home</a>
+            <a href="#FriendZonePage" data-role="button" data-icon="grid" onclick="cleanFormSearchFriend();">Friend Zone</a>
+          
+        </div>
+    </section> 
+         <!----------------------End of SearchFriend page-------------------->
+         
+         <!----------------------Start of AddFriend page--------------------->
+          
+         <section id="AddFriendPage" data-role="page" data-theme ="b">
+         <div data-role="header">Add Your Friend</div>
+         
+         <form id="addFriendForm">
+         <span id="status"></span>       
+         <h3> <span id="message" style="display:none;"> You can add more friends or return to main page.</span> </h3>
+           
+           <label>Friend Name :</label>
+           <input type="text" class ="addfriendname" name="name" placeholder ="Enter friend's name" id="addFriendName" onkeyup="enableButtonAddFriend();">
+                        
+        <fieldset data-role="controlgroup">
+	  
+       	<input type="radio" name="type" id="regular" value="regular" checked="checked" />
+     	<label for="regular">Regular</label>
+
+     	<input type="radio" name="type" id="favorite" value="favorite"/>
+     	<label for="favorite">Favorite</label>
+
+        </fieldset>
+           
+           
+       
+           <input type="button" id="AddFriendButton" onclick="addFriendFunc();" value="Add Friend" disabled>
+                         
+                        
+          </form>
+         
+          <div data-role="footer">
+              <a href="#HomePage" data-role="button" data-icon="home" onclick="cleanFormAddFriend();">Home</a>
+              <a href="#FriendZonePage" data-role="button" data-icon="grid" onclick="cleanFormAddFriend();">Friend Zone</a>
+          
+          </div>
+         
+         </section>
+         <!----------------------End of AddFriend page----------------------->
+         
+         <!----------------------Start of RemoveFriend page------------------>
+                   
+         <section id="RemoveFriendPage" data-role="page" data-theme ="b">
+         <div data-role="header">Remove Your Friend</div>
+         
+         <span id="status"></span>       
+         <span id="bad" hidden="true"><h3><br> Try again or return to main page. </h3><br/></span>
+         <span id="good" hidden="true"><h3><br>You can remove more friends or return to main page. </h3><br/></span>
+         <form id="removeFriendForm">
+             <br><label>Friend Name : </label><input type="text" name="friendName" placeholder ="Enter friend's name"  class="removefriendtext" id="removeFriendName" onkeyup="DisableRemoveFriendButton();">
+                        
+             <input type="button" id="removeFriendButton" disabled onclick="removeFriendFunc();" value="Remove Friend"></form>
+                         
+        </form>
+         
+          <div data-role="footer">
+              <a href="#HomePage" data-role="button" data-icon="home" onclick="cleanFormRemoveFriend();">Home</a>
+              <a href="#FriendZonePage" data-role="button" data-icon="grid" onclick="cleanFormRemoveFriend();">Friend Zone</a>
+          
+          </div>
+    </section>
+         <!----------------------End of RemoveFriend page-------------------->
+ 
+         <!----------------------Update Profile page-------------------------->
+         <section id="UpdateProfilePage" data-role="page" data-theme ="b">     
+<nav>
+<div id="viewprofile_headline">
+View Profile
+</div>
+    <div id="viewprofile_help">
+view your profile.
+</div>
+<div id="viewprofile">
+    
+<form id="fprofile">
+name: <input name="name"  id="updateprofilename" type="text" ><br>
+email: <input name="email" id="updateprofileemail" type="email" ><br>
+address: <input name="address" id="updateprofileaddress" type="text" ><br>
+birthday: <input name="birthday" id="updateprofilebirthday" type="date"><br>
+<input type="button" onclick="update_profile();" value="Update"></form>
+
+<script>
+	get_profile();
+</script>
+</div>
+</nav>
+         </section>     
+         <!--------------End Of Update profile page------------------------------->
+         
+         <!-- EditProfile page !-->
+         
+         <section data-role="page" id="editprofilepage" data-theme ="b">
+	
+			<div data-role="header">
+            <h1>Edit Profile</h1>
+			</div>
+			
+				<div data-role="content">
+                                    <div id="editviewprofile">
+                                    <form id="editprofile">
+                                        name: <input name="name" id="editprofilename" type="text" onkeyup="DisableUpdateProfileButton();"><br>
+                                    email: <input name="email" id="editprofileemail" type="email" onkeyup="DisableUpdateProfileButton();"><br>
+                                    address: <input name="address" id="editprofileaddress" type="text" onkeyup="DisableUpdateProfileButton();"><br>
+                                    birthday: <input name="birthday" id="editprofilebirthday" type="date"  onchange="DisableUpdateProfileButton();"><br>
+                                    <input type="button" onclick="update_profile();" value="Update" id='editProfileButton' disabled></form>
+
+                                    </div>
+                                </div>
+				<div data-role="footer">
+                                    <a href="#HomePage" data-role="button" data-icon="home" onclick="cleanFormEditProfile();">Home</a>
+				</div>
+			
+             
+         </section>  
+		<!-- End of Edit page !-->
+                
+<!------------------#LiorChange---------StartOfRateDialogPage---------------------------->
+
+<section id="StartOfRateDialogPage" data-role="page" data-theme ="b">
+       
+   <div data-role="header">Rate Dialog Page</div>
+    
+   
+   <ul data-role ="listview" id="rateDialogDetails"><li id ="TheDialogRateDetails"></li>
+   </ul>
+    
+   <input type="hidden" id="takeInfoFromHere">
+    <div data-role="footer">
+            <a href="#HomePage" data-role="button" data-icon="home" onclick="cleanDialogPage();">Home</a>
+            <a href="#RestaurantZonePage" data-role="button" data-icon="grid" onclick="cleanDialogPage();">Restaurant Zone</a>
+            <a href ="#SearchRestaurantPage" data-role="button" data-icon="back" onclick="cleanDialogPage();">Back to Search</a>
+    </div>
+   </section>
+
+<!---------------------------EndOfRateDialogPage---------------------------->
+
+         </body>
+</html>
